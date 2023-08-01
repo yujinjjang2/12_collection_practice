@@ -2,51 +2,38 @@ package edu.kh.practice.model.vo;
 
 public class Book {
 	
-	private int number;
-	private String title;
-	private String author;
-	private int price;
-	private String publishing;
+	private String name; // 책제목
+	private String writer; // 저자
+	private int price; // 가격
+	private String publisher; // 출판사
+	private int bookNum; // 책번호
 	
 	public Book() {}
-	
-	public Book(int number, String title, String author)  {
-		this.number = number;
-		this.title = title;
-		this.author = author;
-	}
 
-	public Book(int number, String title, String author, int price, String publishing) {
+	public Book(int bookNum, String name, String writer, int price, String publisher) {
 		super();
-		this.number = number;
-		this.title = title;
-		this.author = author;
+
+		this.bookNum = bookNum;
+		this.name = name;
+		this.writer = writer;
 		this.price = price;
-		this.publishing = publishing;
-	}
-	
-	public int getNumber() {
-		return number;
+		this.publisher = publisher;
 	}
 
-	public void setNumber(int number) {
-		this.number = number;
+	public String getName() {
+		return name;
 	}
 
-	public String getTitle() {
-		return title;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public String getWriter() {
+		return writer;
 	}
 
-	public String getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
 
 	public int getPrice() {
@@ -57,22 +44,26 @@ public class Book {
 		this.price = price;
 	}
 
-	public String getPublishing() {
-		return publishing;
+	public String getPublisher() {
+		return publisher;
 	}
 
-	public void setPublishing(String publishing) {
-		this.publishing = publishing;
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+
+	public int getBookNum() {
+		return bookNum;
+	}
+
+	public void setBookNum(int bookNum) {
+		this.bookNum = bookNum;
 	}
 
 	@Override
 	public String toString() {
-		return "Book [number=" + number + ", title=" + title + ", author=" + author + ", price=" + price
-				+ ", publishing=" + publishing + "]";
+		return bookNum + "번 도서 : [도서제목 : " + name + " / 도서저자 : " + writer + " / 도서가격 : " + price + "원 / 출판사 : " + publisher + "]";	
 	}
-
 	
 	
-	
-
 }
