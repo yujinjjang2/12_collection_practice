@@ -253,6 +253,7 @@ public class BookService {
 				System.out.println("5. 즐겨찾기 추가");
 				System.out.println("6. 즐겨찾기 삭제");
 				System.out.println("7. 즐겨찾기 조회");
+				System.out.println("8. 추천 도서");
 				System.out.println("0. 프로그램 종료");
 				
 				System.out.print("메뉴를 입력하세요 : ");
@@ -267,6 +268,7 @@ public class BookService {
 				case 5 : System.out.println(addFavorite()); break;
 				case 6 : System.out.println(deleteFavorite()); break;
 				case 7 : bookList(favList); break;
+				case 8 : recommendedBook(); break;
 				case 0 : System.out.println("종료되었습니다."); break;
 				default : System.out.println("잘못 입력하셨습니다.메뉴에 있는 번호를 입력해주세요"); break;
 				}
@@ -426,7 +428,6 @@ public class BookService {
 				char answer = sc.next().toUpperCase().charAt(0);
 				
 				if(answer == 'Y') {
-					library.remove(index);
 					break;
 				} else {
 					return "삭제를 진행하지 않습니다";
@@ -443,6 +444,7 @@ public class BookService {
 	public String addFavorite() {
 		
 		System.out.println("==== 즐겨 찾기 등록 ====");
+		bookList(library);
 		System.out.print("등록할 도서 번호 입력 : ");
 		int input = sc.nextInt();
 		
@@ -455,7 +457,7 @@ public class BookService {
 			}
 		}
 		
-		if(flag) {
+		if(flag == true) {
 			return "찾는 번호 없다";
 		} else {
 			return "등록 성공";
@@ -494,4 +496,44 @@ public class BookService {
 		}
 	}
 	
+	
+	public void recommendedBook() {
+		
+		System.out.println("\n===== 추천 도서 =====");
+		
+		int max = library.size(); // library는 등록된 도서 리스트
+		
+		int index = (int)(Math.random() * max);
+		
+		System.out.println(library.get(index).getName());
+		
+	}
+	
+//	// 내일 시험 문제 어느정도 풀 수 있는지 테스트하기 위한 문제!
+//	[ 문제 ]
+//	ArrayList<Student> list = new ArrayList<Student>();
+//	
+//	list.add( new Student("고길동", 11) );
+//	list.add( new Student("김길동", 12) );
+//	list.add( new Student("이길동", 14) );
+//	list.add("홍길동");
+//	
+//	for(int i = 0; i <= list.size(); i++) {
+//		list.get(i);
+//	}
+	
+//	for(Student std : list) {
+//		System.out.println(std);
+//	}
+	
+//	
+//	[ 정답 1 ]
+//	제네릭으로 Student 객체 타입을 가지고 있기 때문에 list.add("홍길동"); 오답임.
+//	-> String 형태로 가져올 수 없음!
+//	   list.add ( new Studnet("홍길동", 15) ); 이러한 형식으로 바꿔야 함.
+//	   
+//	[ 정답 2 ]
+//	for문을 돌 때, 0부터 시작하므로 list의 저장된 값까지 돌게되면 저장된 값보다 넘치는 값까지 돌게 되므로
+//	for(int i = 0; i <= list.size(); i++) 오답임.
+//	-> 범위를 for(int i = 0; i < list.size(); i++)로 변경해야 함!
 }
