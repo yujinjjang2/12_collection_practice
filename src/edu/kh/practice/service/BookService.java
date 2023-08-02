@@ -373,20 +373,18 @@ public class BookService {
 				System.out.print("수정할 저자명을 입력하세요 : ");
 				String writer = sc.nextLine();
 				temp.setWriter(writer);
-				
+				break;
 				
 				case 3: System.out.println("=====도서 가격 수정====="); 
 				System.out.print("수정할 가격을 입력하세요 : ");
 				int price = sc.nextInt();
 				temp.setPrice(price);
-				editMenu = 0;
 				break;
 				
 				case 4: System.out.println("=====도서 출판사 수정====="); 
 				System.out.print("수정할 출판사를 입력하세요 : ");
 				String publisher = sc.nextLine();
 				temp.setPublisher(publisher);
-				editMenu = 0;
 				break;
 				
 				case 0: System.out.println("종료합니다"); break;
@@ -428,6 +426,7 @@ public class BookService {
 				char answer = sc.next().toUpperCase().charAt(0);
 				
 				if(answer == 'Y') {
+					library.remove(index);
 					break;
 				} else {
 					return "삭제를 진행하지 않습니다";
